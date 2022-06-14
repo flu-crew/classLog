@@ -11,7 +11,7 @@ setup(
     description="Implementation of logistic regression for classification of sequences based on a reference set",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/flu-crew/classlog",
+    url="https://github.com/flu-crew/classLog",
     author=["Michael Zeller", "Zebulun Arendsee"],
     author_email="mazeller@iasate.edu",
     packages=["classlog"],
