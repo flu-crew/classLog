@@ -25,6 +25,7 @@ setup(
     install_requires=[
         'click',
         'msalign',
+        'scikit-learn>=0.24.1',
     ],
     zip_safe=False,
     include_package_data=True,

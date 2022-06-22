@@ -27,9 +27,10 @@ def train_cmd(alignment, delimiter, column, percent):
 )
 @click.argument("model", default=sys.stdin, type=click.File())
 @click.argument("data", default=sys.stdin, type=click.File())
-def predict_cmd(model, data):
+@click.option("-t", "--threshold", type=float, default=0.85)
+def predict_cmd(model, data, threshold):
     from classlog.classify import predictUnknown
-    predictUnknown(model, data)
+    predictUnknown(model, data, threshold=threshold)
 
 
 @click.command(

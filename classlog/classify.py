@@ -81,7 +81,9 @@ def formatFasta(filename, delim="|", col=1):
             try:
                 clade = defLine[col]
             except IndexError:
-                sys.exit("Postion " + str(col) + " does not exist (remember indexes start at 0 with delimiter '" + delim + "')")
+                print("Postion " + str(col) + " missing from " + sub[0])
+                continue
+                pass
         else:
             clade = ""
         sub.insert(1, clade)
@@ -327,19 +329,6 @@ def predictUnknown(classifierPickle, inputFile, threshold = 0.85 ):
     None.
 
     """
-    #Load in alignment methods
-    ###from zellerify.align import needlemanWunsch, dropInsertions
-    
-    
-    #test lines
-    """
-    classifierPickle = "zellerify/data/h1/aa/p10_aa_no2020_train.fasta.classify.pickle"
-    classifierPickle = "C:/Users/mazeller.NUSSTF/Desktop/Lab/sequence_classifier/prrsv_orf5/not1/p100train.na.fasta.classify.pickle"
-    importClassifier = pickle.load(open( classifierPickle, "rb" ))     #489us
-    inputFile = "zellerify/data/h1/aa/aa_2020_test.fasta"
-    df = loadFasta(inputFile)              
-    """
-    
     # Load in the pickle. This section has a security vunerabiltiy that should be looked into
     importClassifier = pickle.load(open( classifierPickle.name, "rb" ))
 
