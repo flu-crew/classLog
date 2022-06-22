@@ -6,6 +6,10 @@ can then be used to assign classification future clades with linear time complex
 ## Installation
 Navigate to the directory with the setup.py/ 
 ```bash
+#Clone the classlog repo
+git clone https://github.com/flu-crew/classLog.git
+cd classLog
+
 #Install the the rapid aligner - rpalign
 git clone https://github.com/arendsee/rpalign.git
 cd rpalign
