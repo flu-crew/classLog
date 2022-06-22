@@ -6,9 +6,9 @@ can then be used to assign classification future clades with linear time complex
 ## Installation
 Navigate to the directory with the setup.py/ 
 ```bash
-#Install the correct msalign
-git clone https://github.com/arendsee/msalign.git
-cd msalign
+#Install the the rapid aligner - rpalign
+git clone https://github.com/arendsee/rpalign.git
+cd rpalign
 pip install .
 
 #Install classlog
