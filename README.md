@@ -4,7 +4,7 @@ is designed to train logistic regression classifiers based on genetic informatio
 can then be used to assign classification future clades with linear time complexity. 
 
 ## Installation
-Navigate to the directory with the setup.py/ 
+Clone and then navigate to the directory with the setup.py/ 
 ```bash
 #Clone the classlog repo
 git clone https://github.com/flu-crew/classLog.git
