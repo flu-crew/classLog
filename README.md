@@ -1,14 +1,23 @@
+<p align="center">
+  <img src="https://github.com/flu-crew/classLog/img/logo.png">
+</p>
+
+
 # classLog: Machine learning tool for classification of genetic sequences
 Implementation of logistic regression for classification of sequences based on a reference set. Classlog 
 is designed to train logistic regression classifiers based on genetic information. Trained classifiers 
 can then be used to assign classification future clades with linear time complexity. 
 
 ## Installation
-Navigate to the directory with the setup.py/ 
+Clone and then navigate to the directory with the setup.py/ 
 ```bash
-#Install the correct msalign
-git clone https://github.com/arendsee/msalign.git
-cd msalign
+#Clone the classlog repo
+git clone https://github.com/flu-crew/classLog.git
+cd classLog
+
+#Install the the rapid aligner - rpalign
+git clone https://github.com/arendsee/rpalign.git
+cd rpalign
 pip install .
 
 #Install classlog
@@ -25,10 +34,10 @@ pip uninstall classlog
 Classlog is designed to leverage the power of machine learning to classify sequences. Once a logistic regression
 classifier has been trained on a high-quality multisequence alignment that broadly covers all cases interest, 
 that classifier can be recyled to classify unknown sequences in linear run time. This classification is based on 
-the idea that clade defining mutations are linearly seperable in, where each position in the sequence is a nominal 
+the idea that clade defining mutations are linearly seperable where each position in the sequence is a nominal 
 axis. 
   
-This tutorial will be based on Porcie Respritory and Reproductive Syndrome virus (PRRSv) classified by Paploski et al<sub>1</sub>.
+This tutorial will be based on the ORF5 gene of Porcine Respritory and Reproductive Syndrome virus (PRRSv) lineages classified by Paploski et al<sub>1</sub>.
 The first step will be to test that the FASTA containing the sequences have been properly annotated with classifications using 
 the getclasses subcommand. 
   
@@ -47,7 +56,7 @@ Unique classes: ['L1A', 'L8', 'L7', 'L1E', 'L5', 'L1B', 'L1D', 'L9', 'L1C', 'T1'
 >delimiter '|')`. 
   
 Now that the classes have been confirmed, we can train a classifier based on the data. The gene of concern is the ORF5, which is typically 603 nucleotides in 
-length, though variants between 600-606 are ragularly detected. There is a relative high amount of diversity between ORF5 clade designations, so it is  
+length, though variants between 600-606 are regularly detected. There is a relatively high amount of diversity between ORF5 clade designations, so it is  
 reasonable to use a small number of nucleotide or amino acid positions, or features in machine learning terms, to make the classification. We will train the
 classifier on only 5% (~30nt) of the total genetic data. Classlog uses Gini importance score given by a tree classifier to select the features that contribute to the
 largest decrease in node impurity. 
@@ -57,10 +66,10 @@ largest decrease in node impurity.
 complete
 ```
 
-In the above command I have specifiedthe delimiter as "|" and the position as 1, or the second column based on the delimiter, using only the top 3% of the features. 
-As "|" is the default delimiter and 1 is the default position, these do not need to be specified if your input fasta matches this format. After the training completes,
-the selected features can be viewed with the `getfeatures` command being run on the output model. It is important to not that the positions iven are relative to the 
-multisequence alignment input into the program, and not to the actual position in the sequence. If the alignment is ungapped, then these two numbers may be the same.
+In the above command I have specified the delimiter as "|" and the position containing the clade classification as 1, or the second column based on the delimiter, using only the top 5% of the features. 
+As "|" is generally a default delimiter in fasta files and 1 is the default position, these do not need to be specified if your input fasta matches this format. After the training completes,
+the selected features can be viewed with the `getfeatures` command being run on the output model. It is important to note that the positions are relative to the 
+multisequence alignment used in the training, and not to the actual position in the sequence. If the alignment is ungapped, then these two numbers may be the same.
 
 ```bash
 >classlog getfeatures classlog\examples\prrsv\annotated_prrsv2.fasta.classify.pickle
@@ -91,8 +100,8 @@ multisequence alignment input into the program, and not to the actual position i
 ...
 ```
 
-Checking the features can indicate which positions are critical for clade detemrination, and tend to be more helpful when looking 
-at amino acids. Now that the the classifier is trained, it can be used to predict unclassified sequences. 
+Checking the features can indicate which positions are critical for clade classification, and tend to be more helpful when looking 
+at amino acids. Now that the the classifier is trained, it can be used to predict unclassified sequences. Using the general usage of classlog predict path_to_model.classify.pickle path_to_unknown.fasta 
 
 ```bash
 >classlog predict classlog\examples\prrsv\annotated_prrsv2.fasta.classify.pickle classlog\examples\prrsv\unknown_small_prrsv.fasta -t 0.7
@@ -118,7 +127,7 @@ KT903695.1 Porcine reproductive and respiratory syndrome virus isolate PRRSV2/US
 KP317085.1 Porcine reproductive and respiratory syndrome virus strain CP296-3/P508 glycoprotein (ORF5) gene_ complete cds       L5      0.978690514785044
 ```
   
-The threshold for classification rejection was manually bset in this run using `-t 0.7`. By default, the threshold is 0.85, where
+The threshold for classification rejection was manually set in this run using `-t 0.7`. By default, the threshold is 0.85, where
 classifications >= 0.95% likelihood are accepted and reported, and less than this value are rejected and an unknown is returned. 
 The results can be piped out to a tab delimited file for use.
   
