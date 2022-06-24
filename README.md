@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=https://github.com/flu-crew/classLog/blob/master/img/logo.png">
+  <img src="https://github.com/flu-crew/classLog/blob/master/img/logo.png">
 </p>
 
 
