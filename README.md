@@ -1,8 +1,3 @@
-<p align="center">
-  <img src="https://github.com/flu-crew/classLog/blob/master/img/logo.png">
-</p>
-
-
 # classLog: Machine learning tool for classification of genetic sequences
 Implementation of logistic regression for classification of sequences based on a reference set. Classlog 
 is designed to train logistic regression classifiers based on genetic information. Trained classifiers 
