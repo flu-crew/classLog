@@ -32,7 +32,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 from sklearn.linear_model import LogisticRegression
 
-from msalign import *
+from rpalign import *
 # TODO add cutoff
 
 
