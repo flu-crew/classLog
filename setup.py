@@ -24,7 +24,7 @@ setup(
     py_modules=["classlog"],
     install_requires=[
         'click',
-        'msalign',
+        'rpalign',
         'scikit-learn>=0.24.1',
     ],
     zip_safe=False,
