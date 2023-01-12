@@ -17,9 +17,10 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 @click.option("-d", "--delimiter", default="|")
 @click.option("-n", "--column", type=int, default=1)
 @click.option("-p", "--percent", type=float, default=0.0)
-def train_cmd(alignment, delimiter, column, percent):
+@click.option("-f", "--folds", type=int, default=0)
+def train_cmd(alignment, delimiter, column, percent, folds):
     from classlog.classify import trainClassifier
-    trainClassifier(alignment.name, delim=delimiter, col=column, percentFeatures=percent)
+    trainClassifier(alignment.name, delim=delimiter, col=column, percentFeatures=percent, kfolds=folds)
 
 @click.command(
     name="predict",

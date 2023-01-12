@@ -236,7 +236,7 @@ def predictMissing(inputFile, delim="|", col=1, threshold=0.85):
     return
 
 
-def trainClassifier(inputFile, delim="|", col=1, percentFeatures = 0):
+def trainClassifier(inputFile, delim="|", col=1, percentFeatures = 0, kfolds = 0):
     """
     Trains a classifier based on input sequences. Outputs a pickle file containing
     the classifier, a base sequences from index 0 to align on, features as amino
@@ -312,6 +312,14 @@ def trainClassifier(inputFile, delim="|", col=1, percentFeatures = 0):
     
     pickle.dump( exportClassifier, open( inputFile + ".classify.pickle", "wb" ))
     print("complete")
+
+    #Cross validation
+    if (kfolds > 0):
+        from sklearn.model_selection import cross_val_score
+        scores = cross_val_score(lr,x_train, y_train, cv=kfolds, scoring='f1_macro')
+        print("Average Macro F1: {}".format(sum(scores)/len(scores)))
+        print("Raw Macro F1: {}".format(scores))
+    
     return
 
 
