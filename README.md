@@ -277,3 +277,18 @@ KU503836.1 Porcine reproductive and respiratory syndrome virus isolate PRRSV2/US
 KT903695.1 Porcine reproductive and respiratory syndrome virus isolate PRRSV2/USA/AP1251/2012 glycoprotein 5 gene_ complete cds unknown 0.6638393549798826
 KP317085.1 Porcine reproductive and respiratory syndrome virus strain CP296-3/P508 glycoprotein (ORF5) gene_ complete cds       L5      0.9987939638914471
 ```
+
+# Troubleshooting
+## ValueError: Illegal character
+This error can occur in nucleotide FASTAs where non-standard characters are used. One potential way to quickly fix this error is to standardize the FASTA. This can be done using SMOF (`pip install smof`), using the following command.
+
+```python
+smof clean -t n -r -d -x [PROBLEM.FASTA]> [CLEAN.FASTA]
+```
+
+This command 
+* Converts irregular letters to unknown
+* Converts 'X' in to 'N' in DNA
+* Removes all non-letter characters (gaps, stops, etc.)
+
+This should take care of the majority of irregular cases within a FASTA.
