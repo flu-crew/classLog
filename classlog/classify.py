@@ -317,8 +317,8 @@ def trainClassifier(inputFile, delim="|", col=1, percentFeatures = 0, kfolds = 0
     if (kfolds > 0):
         from sklearn.model_selection import cross_val_score
         scores = cross_val_score(lr,x_train, y_train, cv=kfolds, scoring='f1_macro')
-        print("Average Macro F1: {}".format(sum(scores)/len(scores)))
-        print("Raw Macro F1: {}".format(scores))
+        print("Average Macro F1: " + str(sum(scores)/len(scores)))
+        print("Raw Macro F1: " + str(scores))
     
     return
 
