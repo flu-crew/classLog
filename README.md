@@ -42,7 +42,7 @@ the getclasses subcommand.
 >classlog getclasses classlog/examples/prrsv/annotated_prrsv2.fasta
 Unique classes: ['L7', 'L5', 'L1B', 'L1C', 'L8', 'L1D', 'L9', 'L1A', 'L1E']
 
->classlog getclasses classlog getclasses classlog/examples/prrsv/annotated_prrsv1and2.fasta
+>classlog getclasses classlog/examples/prrsv/annotated_prrsv1and2.fasta
 Unique classes: ['L1A', 'L8', 'L7', 'L1E', 'L5', 'L1B', 'L1D', 'L9', 'L1C', 'T1']
 ```
   
