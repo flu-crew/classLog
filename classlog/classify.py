@@ -301,7 +301,7 @@ def trainClassifier(inputFile, delim="|", col=1, percentFeatures = 0, kfolds = 0
     lr = LogisticRegression(
         multi_class="ovr", random_state=0, max_iter=1000, n_jobs=-1
     )  # solver='liblinear'
-    lr.fit(x_train, y_train)
+    lr.fit(x_train.values, y_train)
 
     #Pack the pickle
     exportClassifier = {"classifier":lr,
