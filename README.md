@@ -3,7 +3,7 @@ Implementation of logistic regression for classification of sequences based on a
 is designed to train logistic regression classifiers based on genetic information. Trained classifiers 
 can then be used to assign classification future clades with linear time complexity. 
 
-Please cite: Zeller, M.A., Arendsee, Z.W., Smith, G.J.D., and Anderson, T.K. classLog: Logistic regression for the classification of genetic sequences. [*bioRxiv*, 2022.08.15.503907; doi: https://doi.org/10.1101/2022.08.15.503907](https://www.biorxiv.org/content/10.1101/2022.08.15.503907v1)
+Please cite: Zeller, M.A., Arendsee, Z.W., Smith, G.J.D., and Anderson, T.K. (2023). classLog: Logistic regression for the classification of genetic sequences. [*Frontiers in Virology*, doi: https://doi.org/10.3389/fviro.2023.1215012](https://www.frontiersin.org/articles/10.3389/fviro.2023.1215012/abstract)
 
 ## Installation
 Clone and then navigate to the directory with the setup.py/ 
