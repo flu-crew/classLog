@@ -1,4 +1,6 @@
 # classLog: Machine learning tool for classification of genetic sequences
+[![DOI](https://zenodo.org/badge/503481933.svg)](https://zenodo.org/doi/10.5281/zenodo.13126621)
+
 Implementation of logistic regression for classification of sequences based on a reference set. Classlog 
 is designed to train logistic regression classifiers based on genetic information. Trained classifiers 
 can then be used to assign classification future clades with linear time complexity. 
